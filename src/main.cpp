@@ -1,14 +1,14 @@
 #include "main.h"
 using namespace okapi;
-//okapi::MotorGroup leftmotors({1, 2});
-//okapi::MotorGroup rightmotors({-3, -4});
 Controller masterController;
 auto drive = ChassisControllerFactory::create(
- {1, 2}, {-3, -4}
- AbstractMotor::gearset::green,
- {4_in, 10.5_in}
+ {1, 2}, {-3, -4},
+AbstractMotor::gearset::green,
+{4_in, 10.5_in}
 );
-bool arcade = false;
+ControllerButton DS(ControllerDigital::A);
+bool arcade = true;
+int auton = 0;
 /**
  * Runs initialization code. This occurs as soon as the program is started.
  *
@@ -62,14 +62,34 @@ void autonomous() {}
  * task, not resume it from where it left off.
  */
 void opcontrol() {
-	
+
 
 	while (true) {
+		if(arcade==true)
+		{
+			if(DS.isPressed())
+			{
+				if(DS.changedToReleased())
+				{
+				 arcade = false;
+				}
+			}
 		drive.arcade(masterController.getAnalog(ControllerAnalog::leftY),
-               masterController.getAnalog(ControllerAnalog::leftX));
-
-
-
+            		 masterController.getAnalog(ControllerAnalog::rightX));	
+		}
+		else
+		{
+			if(DS.isPressed())
+			{
+				if(DS.changedToReleased())
+				{
+				 arcade = true;
+				}
+			}
+		 drive.tank(masterController.getAnalog(ControllerAnalog::leftY),
+		 			masterController.getAnalog(ControllerAnalog::rightY));
+		}
+		
 		pros::delay(20);
 	}
 }
