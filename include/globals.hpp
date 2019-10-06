@@ -31,3 +31,8 @@ void autonb12();
 
 //no preset
 void noauton();
+
+//lvgl
+void lvgldefs();
+
+extern int autonpreset;

@@ -38,9 +38,10 @@
 /**
  * You should add more #includes here
  */
-#include "okapi/api.hpp"
+#include "okapi\api.hpp"
+#include "C:\Users\VexLabUser\stoopid_program\include\pros\apix.h"
 //#include "pros/api_legacy.h"
-#include "autondefs.h"
+#include "globals.hpp"
 /**
  * If you find doing pros::Motor() to be tedious and you'd prefer just to do
  * Motor, you can use the namespace with the following commented out line.
