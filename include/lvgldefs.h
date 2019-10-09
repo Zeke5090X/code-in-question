@@ -1,4 +1,4 @@
-#include "main.h"
+/*#include "main.h"
 
 lv_style_t btn1_rel;
 lv_style_t btn1_pr;
@@ -25,3 +25,4 @@ lv_obj_t * bluestart1btntxt;
 lv_obj_t * bluestart2;
 lv_obj_t * bluestart2btn;
 lv_obj_t * bluestart2btntxt;
+*/
